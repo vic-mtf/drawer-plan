@@ -1,0 +1,2 @@
+Mettre des points aux bords de chaque mur pour les rendre facile à cliquer.
+Ajouter une fonctionnalité permettant de générer un mur ayant comme bords un point quelconque et un point quelconque d'un mur déjà existant.
