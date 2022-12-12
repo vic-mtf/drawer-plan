@@ -1,7 +1,7 @@
 {
     "canvas": {
-        "height": 500,
-        "width": 1000,
+        "height": 600,
+        "width": 710,
         "backgroundColor": "#fff",
         "className": "canvas",
         "maxZoom": 10,

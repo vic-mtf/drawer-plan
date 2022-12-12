@@ -1,16 +1,38 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100vw; 
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center; 
-} 
-
-.canvas {
-  border: 1px solid gray;
-  background-color: #fff;
+@font-face {
+  font-family: "San Francisco";
+  src: url('./SF-Compact-Text-Medium.otf');
 }
 
+*{
+  font-family: "San Francisco"!important;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+}
+
+.canvas {
+  background-color: #eee;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1aa; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888a; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555a; 
+  }
