@@ -1,18 +1,18 @@
 {
     "canvas": {
         "height": 600,
-        "width": 710,
+        "width": 1200,
         "backgroundColor": "#fff",
         "className": "canvas",
-        "maxZoom": 10,
-        "minZoom": 1,
+        "maxZoom": 20,
+        "minZoom": 0.5,
         "strokeWidth": 2,
         "opacity": 0.5,
         "strokeWidthDrawer": 4,
         "opacityDrawer": 0.25,
         "uniqueColorDrawer": true,
         "defaultColorDrawer": "#ff0000",
-        "radius": 5,
+        "radius": 2,
         "dashDrawer": [5]
     }
 }

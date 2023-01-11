@@ -18,6 +18,7 @@ ModeProvider.propTypes = {
         'scaling',
         'line',
         'polygon',
+        'nodes',
         'clear'
     ])
 }

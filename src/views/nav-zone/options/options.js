@@ -3,6 +3,7 @@ import polygon from '../../../assets/icons8-polygone-96.png';
 import eraser from '../../../assets/icons8-gomme-96.png';
 import scale from '../../../assets/icons8-règle-100.png';
 import hand from '../../../assets/icons8-hand-tool-96.png';
+import nodes from '../../../assets/icons8-nodes-96.png';
 import {store} from '../../../redux';
 
 const mode = store.getState().drawZone.mode;
@@ -22,6 +23,11 @@ const options = [
         icon : polygon,
         title : "Dessiner un cluster",
         mode: 'polygon'
+    },
+    {
+        icon : nodes,
+        title : "Dessiner un noeud",
+        mode : "nodes"
     },
     {
         icon : eraser,

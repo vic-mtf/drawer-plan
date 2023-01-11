@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Shape } from "react-konva";
-// import { useMode } from "../../../../utils/mode";
 import { useSnapCoordsRef } from "./Forms";
 import config from "../../../../config/config.json";
 import { useLayer } from "../plan/Plan";
@@ -14,7 +13,6 @@ const initOption = {
 };
 
 const CustomPolygon = ({points, onClick, ...otherProps}) => {
-    // const [mode] = useMode();
     const mode = useSelector(store => store.drawZone.mode);
     const [option, setOption] = useState({
         ...initOption, 

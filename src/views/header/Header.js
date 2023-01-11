@@ -40,7 +40,7 @@ export default function Header() {
                     Indoors wall creation
                 </Typography>
                 <ThemeOptions/>
-                <ZoomOptions/>
+                {/* <ZoomOptions/> */}
                 <DownloadButton/>
             </Toolbar>
         </AppBar>

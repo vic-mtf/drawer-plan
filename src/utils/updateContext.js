@@ -1,15 +1,18 @@
 import drawLine from "./drawLine"
+import drawNodes from "./drawNodes";
 import drawPolygon from "./drawPolygon";
 
 export default function updateContext(layer, mode, {
     coords, 
     actionCoords, 
     actionMoveCoords,
-    addLine, 
+    addLine,
+    addNode, 
     addPolygon,
     coordsRef,
     snapCoords,
     lines,
+    nodes,
     polygons,
 }) {
     switch(mode) {
@@ -30,6 +33,15 @@ export default function updateContext(layer, mode, {
             coordsRef,
             snapCoords,
             polygons,
+        }); break;
+        case 'nodes' : drawNodes(layer, {
+            coords,
+            actionCoords, 
+            actionMoveCoords,
+            addNode,
+            coordsRef,
+            snapCoords,
+            nodes,
         }); break;
         case 'scaling': break;
         default: break;

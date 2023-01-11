@@ -1,6 +1,6 @@
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { Box, Button, Divider, IconButton, List, ListItem, ListItemButton, ListItemText, Stack, useTheme } from "@mui/material";
+import { Button, Divider, IconButton,  Stack, useTheme } from "@mui/material";
 import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import CustomBox from "../../components/CustomBox";

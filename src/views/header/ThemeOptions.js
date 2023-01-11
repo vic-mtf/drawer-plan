@@ -10,7 +10,7 @@ import { changeTheme } from '../../redux/app';
 const options = [
     {
         Icon: Brightness4Icon,
-        label: 'Defaut (os)',
+        label: 'Défaut (os)',
         mode: 'system',
     },
     {

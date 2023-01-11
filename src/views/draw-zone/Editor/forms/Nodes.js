@@ -12,7 +12,7 @@ const initOption = {
     hover: false,
 };
 
-const CustomLine = ({points, onClick, ...otherProps}) => {
+const CustomNode = ({points, onClick, ...otherProps}) => {
     const mode = useSelector(store => store.drawZone.mode);
     const [option, setOption] = useState({
         ...initOption, 
@@ -45,8 +45,8 @@ const CustomLine = ({points, onClick, ...otherProps}) => {
 
     return (
         <Shape
-            onMouseEnter={isOneOf(mode, ['line', 'clear']) && handleMouseEnter}
-            onMouseLeave={isOneOf(mode, ['line', 'clear']) && handleMouseLeave}
+            onMouseEnter={isOneOf(mode, ['nodes', 'clear']) && handleMouseEnter}
+            onMouseLeave={isOneOf(mode, ['nodes', 'clear']) && handleMouseLeave}
             onClick={mode === 'clear' && onClick}
             {...otherProps}
             strokeWidth={option.strokeWidth}
@@ -67,12 +67,11 @@ const CustomLine = ({points, onClick, ...otherProps}) => {
                     }
                 return({x, y});
                 }).forEach(({x, y}, index) => {
-                    if(option.hover){
-                        shape.fill(option.stroke);
-                        context.beginPath();
-                        context.arc(x, y, config.canvas.radius, 0, Math.PI * 2);
-                        context.fillShape(shape);
-                    }
+                    shape.fill(option.stroke);
+                    context.beginPath();
+                    context.arc(x, y, 10, 0, Math.PI * 2);
+                    context.stroke();
+                    // context.fillShape(shape);
                 });
             }}
         />
@@ -80,15 +79,15 @@ const CustomLine = ({points, onClick, ...otherProps}) => {
 
 };
 
-export default function Lines ({lines, actionLines}) {
+export default function Nodes ({nodes, actionNodes}) {
     const layer = useLayer();
     
     return (
-        lines.map((props, index) => (
-            <CustomLine 
+        nodes.map((props, index) => (
+            <CustomNode 
                 key={index}
                 onClick={() => {
-                    actionLines.remove(props.id);
+                    actionNodes.remove(props.id);
                     layer.parent.container().style.cursor = 'default';
                 }}
                 {...props}

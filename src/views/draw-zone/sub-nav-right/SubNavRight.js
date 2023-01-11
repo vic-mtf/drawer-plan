@@ -1,9 +1,10 @@
-import {Box, List, ListItem, ListItemIcon, Slider, Stack, Typography} from '@mui/material';
+import {Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Slider, Stack, Typography} from '@mui/material';
 import OpacityIcon from '@mui/icons-material/Opacity';
 import { useDispatch, useSelector } from 'react-redux';
 import ScaleOptions from '../../header/ScaleOptions';
 import { setInfosImage } from '../../../redux/navZone';
 import { useEffect, useState } from 'react';
+import NorthWestIcon from '@mui/icons-material/NorthWest';
 
 const ImageDetail = ({image}) => {
     const [value, setValue] = useState(1);
@@ -19,10 +20,16 @@ const ImageDetail = ({image}) => {
             id: image.id,
             data: {...image.data, opacity: value}
         }));
-    },[value])
+    },[value]);
+
     return (
         <List
-            sx={{ bgcolor: 'background.paper', m: 1 }}
+            sx={{ bgcolor: 'background.paper',
+                marginTop: 'auto',
+                marginBottom: 'auto',
+                marginLeft: 1,
+                marginRight: 1
+        }}
         >
             <ListItem>
                 <Box>
@@ -46,6 +53,18 @@ const ImageDetail = ({image}) => {
                         onChange={handleChange}
                     /> 
                 </Box>
+            </ListItem>
+            <ListItem
+                
+            >
+                <ListItemButton
+                    onClick={null}
+                >
+                    <ListItemIcon>
+                        <NorthWestIcon/>
+                    </ListItemIcon>
+                    <ListItemText secondary="Remisa à l'origine"/>
+                </ListItemButton>
             </ListItem>
         </List>
     )

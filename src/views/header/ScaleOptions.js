@@ -24,7 +24,7 @@ export default function ScaleOptions({data, id}){
             alignItems='center'
             justifyContent='center'
         >
-            <TextField variant="outlined" type='number' label="Scale horizotal"
+            <TextField variant="outlined" type='number' label="Scale x ↔"
                 inputProps={{
                     min: 0, 
                     step:0.2,
@@ -35,7 +35,7 @@ export default function ScaleOptions({data, id}){
                 onChange={handleChange("scaleX")}
                 value={kx}
             />
-            <TextField variant="outlined" type='number' label="Scale vericale"
+            <TextField variant="outlined" type='number' label="Scale y ↕"
                 inputProps={{
                     min: 0,
                     step:0.2,

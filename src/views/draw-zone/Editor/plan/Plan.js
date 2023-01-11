@@ -37,6 +37,7 @@ export default function Plan ({
         width: image?.width, 
         height: image?.height
     });
+    console.log('ici ....',data);
     const mode = useSelector(store => store.drawZone.mode);
     // const [mode] = useMode();
     const handleTransformEnd = (e) => {
@@ -75,7 +76,6 @@ export default function Plan ({
     }, [isSelected, mode, layerProps, planFocus]);
     
     useEffect(() => {
-        // console.log(shapeRef.current?.parent);
         const resetEvent = (event) => {
             const {id, name} = event.detail;
             shapeRef.current?.scaleX(1);
@@ -92,14 +92,15 @@ export default function Plan ({
     });
 
     useEffect(() => {
-        const superpositionEvent = (event) => {
+        const resetOriginEvent = (event) => {
             const {id, name} = event.detail;
-            console.log(shapeRef.current);
+            shapeRef.current?.parent.x(0);
+            shapeRef.current?.parent.y(0);
         }
-        document.addEventListener('superposition', superpositionEvent);
+        document.addEventListener('reset_origin', resetOriginEvent);
         return () => {
-            document.removeEventListener('superposition', superpositionEvent);
-        }
+            document.removeEventListener('reset_origin', resetOriginEvent);
+        } 
     });
 
     return (
@@ -133,7 +134,7 @@ export default function Plan ({
                 {children}
                 {(isSelected && mode === 'scaling') && (
                     <Transformer
-                        rotateEnabled={false}
+                        rotateEnabled={true}
                         ref={trRef}
                         boundBoxFunc={handlBoundBox}
                     />

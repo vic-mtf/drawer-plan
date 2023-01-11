@@ -44,19 +44,20 @@ const navZone = createSlice({
             state.imagesSelected = state.imagesSelected.filter(image => image.id !== id);
             state.imageScaled = state.imageScaled.filter(image => image.id !== id);
         },
+        deleteImage (state, actions) {
+            state.images = state.images.filter(image => image.id !== actions.payload);
+        },
         selectImage (state, actions) {
             const id = actions.payload;
             state.imageSelected = state.imagesSelected.find(image => image.id === id) || null;
         },
         setInfosImage (state, actions) {
             const {id, data} = actions.payload;
-           
             const copyImagesScaled = [...state.imageScaled];
             const index = copyImagesScaled.findIndex(image => image.id === id);
-            if(!!~index) {
+            if(~index) {
                 copyImagesScaled[index] = {id, ...data};
-            }
-            else {
+            } else {
                 copyImagesScaled.push({id, ...data});
             }
             state.imageScaled = copyImagesScaled;
@@ -70,5 +71,14 @@ const navZone = createSlice({
     }
 });
 
-export const {toogleOpenDrawer, handleImage, addImage, removeImage, selectImage, setInfosImage, updateDataImage} = navZone.actions;
+export const {
+    deleteImage, 
+    toogleOpenDrawer, 
+    handleImage, 
+    addImage, 
+    removeImage, 
+    selectImage, 
+    setInfosImage, 
+    updateDataImage
+} = navZone.actions;
 export default navZone.reducer;

@@ -5,7 +5,9 @@ import options from "./options";
 import { changeColor, changeMode } from "../../../redux/drawZone";
 import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import NorthWestIcon from '@mui/icons-material/NorthWest';
 import getColor from "../../../utils/getColor";
+import { setInfosImage } from "../../../redux/navZone";
 
 const ResetButton = () => {
     const imagesSelected = useSelector(store => store.navZone.imagesSelected);
@@ -29,6 +31,31 @@ const ResetButton = () => {
                 >
                     <ListItemIcon>
                         <RestartAltIcon sx={{fontSize: 30, display: "inline-block"}}/>
+                    </ListItemIcon>
+                </ListItemButton>
+            </ListItem> 
+        </Zoom> 
+    );
+}
+
+const OriginButton = () => {
+    const imagesSelected = useSelector(store => store.navZone.imagesSelected);
+    const mode = useSelector(store => store.drawZone.mode);
+    const dispatch = useDispatch();
+    const [image] = imagesSelected;
+    const {id, data} = image || {};
+    
+    console.log(imagesSelected, id);
+    return (
+        <Zoom in={mode !== 'scaling'} style={{overflow: 'hidden'}}>
+            <ListItem
+                sx={{m: 0, p: 0, fontSize: 15}}
+            >
+                <ListItemButton 
+                    onClick={() => dispatch(setInfosImage({id, data: {...data, scaleX: 1, scaleY: 1, x: 0, y: 0}}))}
+                >
+                    <ListItemIcon>
+                        <NorthWestIcon sx={{fontSize: 30, display: "inline-block"}}/>
                     </ListItemIcon>
                 </ListItemButton>
             </ListItem> 
@@ -70,6 +97,7 @@ const OptionsWrapper = () => {
                 key={index} 
                 sx={{m: 0, p: 0, fontSize: 15}}
                 onClick={() => dispatch(changeMode(item.mode))}
+                title={item.title}
             >
                 <ListItemButton
                     selected={item.mode === mode}
@@ -86,6 +114,7 @@ export default function ListOptions () {
     return(
         <List disablePadding sx={{position: 'relative', width: '100%'}}>
             <OptionsWrapper/>
+            <OriginButton/>
             <ResetButton/>
             <ColorButton/>
         </List>

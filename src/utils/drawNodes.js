@@ -1,11 +1,11 @@
 import getCoords from "./getCoords";
 import projectPoint from "./projectPoint";
 
-export default function drawLine (layer, {
+export default function drawNodes (layer, {
     coords, 
     actionCoords,
     actionMoveCoords,
-    addLine,
+    addNode,
     snapCoords,
 }) {
     layer.on('click', e => {
@@ -23,7 +23,7 @@ export default function drawLine (layer, {
             }
 
             if (coords.length && distance > 3) {
-                    addLine([point.x, point.y,  x, y]);
+                    addNode([point.x, point.y,  x, y]);
                     actionCoords.clear();
                     actionMoveCoords.clear();
                     layer.parent.container().style.cursor = 'default';

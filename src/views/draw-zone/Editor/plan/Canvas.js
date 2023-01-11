@@ -29,7 +29,7 @@ export default function Canvas ({children}) {
     const handleWheel = (e) => {
         e.evt.preventDefault();
         const { minZoom, maxZoom} = config.canvas;
-        const scaleBy = 1.02;
+        const scaleBy = 1.1;
         const stage = e.target.getStage();
         const oldScale = stage.scaleX();
         const mousePointTo = {
@@ -37,10 +37,10 @@ export default function Canvas ({children}) {
           y: stage.getPointerPosition().y / oldScale - stage.y() / oldScale
         };
     
-        let stageScale = e.evt.deltaY > 0 ? 
+        let stageScale = e.evt.deltaY < 0 ? 
         oldScale * scaleBy : oldScale / scaleBy;
-        stageScale = stageScale < 1 ? minZoom : 
-        stageScale > 10 ? maxZoom : stageScale; 
+        stageScale = stageScale < 0.5 ? minZoom : 
+        stageScale > 20 ? maxZoom : stageScale; 
         const stageX = -(mousePointTo.x - stage.getPointerPosition().x / stageScale) 
         * stageScale;
         const stageY = -(mousePointTo.y - stage.getPointerPosition().y / stageScale) 
@@ -100,7 +100,7 @@ export default function Canvas ({children}) {
               backgroundRepeat: 'no-repeat',
               backgroundSize: '100%',
             }}
-            //draggable
+            draggable
         >
             {cloneChildren}
         </Stage>

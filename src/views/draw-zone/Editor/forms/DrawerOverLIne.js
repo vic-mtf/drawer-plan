@@ -18,7 +18,7 @@ const {
     radius,
  } = config.canvas;
 
-export default function DrawerOverLine ({addLine, addPolygon, lines, polygons}) {
+export default function DrawerOverLine ({addLine, addNode, addPolygon, lines, polygons}) {
     const layer = useLayer();
     // const [mode] = useMode();
     const mode = useSelector(store => store.drawZone.mode);
@@ -37,7 +37,8 @@ export default function DrawerOverLine ({addLine, addPolygon, lines, polygons}) 
                 moveCoords, 
                 actionCoords, 
                 actionMoveCoords,
-                addLine, 
+                addLine,
+                addNode, 
                 addPolygon,
                 color,
                 snapCoords,
@@ -78,10 +79,19 @@ export default function DrawerOverLine ({addLine, addPolygon, lines, polygons}) 
                         }
                     return({x, y});
                 }).forEach(({x, y}, index) => {
-                    shape.fill(currentColor);
-                    context.beginPath();
-                    context.arc(x, y, radius, 0, Math.PI * 2);
-                    context.fillShape(shape);
+                    if (mode !== 'nodes') {
+                        shape.fill(currentColor);
+                        context.beginPath();
+                        context.arc(x, y, radius, 0, Math.PI * 2);
+                        context.fillShape(shape);
+                    }
+                    else {
+                        shape.fill();
+                        context.beginPath();
+                        context.arc(x, y, 10, 0, Math.PI * 2);
+                        context.stroke();
+                        context.fillShape(shape);
+                    }
                 });
             }}
         />
